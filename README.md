@@ -1,13 +1,24 @@
-# Atlas Roadmap
+# Disko's Commander's Atlas
 
-## Release 1.3 — Application Structure
-Complete.
+Release 2.0 — Command Application Core
 
-## Release 1.4 — Fleet Detail Pages
-Build first detail pages for Guardian MX, Corsair, Cutlass Black, Ares Inferno, Vulture, and Reclaimer.
+This release moves the Atlas toward a production-style command application:
 
-## Release 1.5 — ArcCorp Starter
-Add structured cards for Wala, Baijini Point, Area18, and Lyria.
+- Data-driven Fleet Command from `data/fleet.js`
+- ArcCorp starter framework from `data/atlas.js`
+- Universal search across fleet, places, and tools
+- Mission Planner starter
+- Commander Tools shell
+- Responsive command-console interface
 
-## Release 1.6 — Toolbox Data
-Add first records for medical, refinery, buy/sell, weapons, components, and loadout locker.
+## Upload instructions
+
+Upload the extracted contents to the GitHub repository root:
+
+- `index.html`
+- `README.md`
+- `assets/`
+- `data/`
+- `docs/`
+
+Commit changes, then refresh the GitHub Pages live site after deployment finishes.

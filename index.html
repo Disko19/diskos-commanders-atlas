@@ -4,184 +4,118 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Disko's Commander's Atlas</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 <body>
-  <div class="app-shell">
+  <div class="shell">
     <aside class="sidebar">
       <div class="brand">
         <div class="brand-mark">DCA</div>
         <div>
-          <h1>Disko's Commander's Atlas</h1>
-          <p>Release 1.2 • Command Center Upgrade</p>
+          <h1>Disko's Atlas</h1>
+          <p>Command Application Core</p>
         </div>
       </div>
-      <nav class="main-nav" aria-label="Primary navigation">
-        <a href="#command-center">Command Center</a>
-        <a href="#quick-board">Quick Board</a>
-        <a href="#fleet-command">Fleet Command</a>
-        <a href="#systems">Star Systems</a>
-        <a href="#toolbox">Toolbox</a>
-        <a href="#release-log">Release Log</a>
+      <nav class="nav" aria-label="Primary">
+        <a href="#command" class="active" data-section-link="command">Command Center</a>
+        <a href="#fleet" data-section-link="fleet">Fleet Command</a>
+        <a href="#atlas" data-section-link="atlas">Star Atlas</a>
+        <a href="#tools" data-section-link="tools">Commander Tools</a>
+        <a href="#planner" data-section-link="planner">Mission Planner</a>
+        <a href="#roadmap" data-section-link="roadmap">Roadmap</a>
       </nav>
-      <div class="mission-rule">
-        <span>Standing Order</span>
-        <strong>Fast answers win.</strong>
-        <p>If a feature does not help Disko fly, fight, haul, mine, salvage, or explore faster, it does not make the deck.</p>
+      <div class="sidebar-card">
+        <span class="label">Live Site</span>
+        <strong>GitHub Pages</strong>
+        <p>Upload extracted files to update the command console.</p>
       </div>
     </aside>
 
-    <main>
-      <section id="command-center" class="hero panel">
-        <div class="hero-copy">
-          <p class="eyebrow">Bridge computer online</p>
+    <main class="main">
+      <section class="hero" id="command">
+        <div>
+          <p class="eyebrow">Release 2.0 · Command Application Core</p>
           <h2>Welcome back, Commander Disko.</h2>
-          <p class="lead">Your Star Citizen command console: fleet, systems, tools, and field notes built for quick use on the second monitor.</p>
-          <div class="search-box">
-            <input id="search" type="search" placeholder="Search anything: Corsair, Wala, AD5B, salvage, medical, Baijini..." autocomplete="off" />
-            <div id="results" class="results" role="listbox"></div>
-          </div>
-          <div class="quick-actions">
-            <a class="btn" href="#quick-board">Open Quick Board</a>
-            <a class="btn ghost" href="#fleet-command">Fleet Command</a>
-            <a class="btn ghost" href="#systems">Stanton Atlas</a>
-          </div>
+          <p class="hero-copy">A fast, personal Star Citizen command console built around your fleet, your routes, and the decisions you make while flying.</p>
         </div>
-        <div class="command-stack">
-          <article class="command-card primary">
-            <span class="label">Current objective</span>
-            <strong>Build the bridge.</strong>
-            <p>Command Center, Quick Board, Fleet Command, and Atlas skeleton are now shaped for daily use.</p>
-          </article>
-          <article class="mini-card">
-            <span>Next content target</span>
-            <strong>ArcCorp Route</strong>
-            <p>Wala → Baijini Point → Area18 → Lyria.</p>
-          </article>
-          <article class="mini-card">
-            <span>Personal doctrine</span>
-            <strong>Disko-first</strong>
-            <p>907th material stays parked until it is actually needed.</p>
-          </article>
+        <div class="status-grid">
+          <div><span>Fleet</span><strong id="fleetCount">—</strong></div>
+          <div><span>Modules</span><strong>5</strong></div>
+          <div><span>Focus</span><strong>ArcCorp</strong></div>
         </div>
       </section>
 
-      <section class="status-grid">
-        <article class="panel stat"><span>Fleet assets</span><strong id="fleetCount">28</strong><p>Updated hangar.</p></article>
-        <article class="panel stat"><span>Quick targets</span><strong>12</strong><p>Common lookups.</p></article>
-        <article class="panel stat"><span>Build focus</span><strong>Stanton</strong><p>ArcCorp first.</p></article>
-        <article class="panel stat"><span>Org content</span><strong>Parked</strong><p>Not in scope.</p></article>
+      <section class="search-panel">
+        <label for="globalSearch">Universal Search</label>
+        <div class="search-row">
+          <input id="globalSearch" type="search" placeholder="Search ships, roles, locations, tools… try Guardian, Wala, salvage, cargo" />
+          <button id="clearSearch">Clear</button>
+        </div>
+        <div id="searchResults" class="results"></div>
       </section>
 
-      <section id="quick-board" class="panel">
-        <div class="section-head split">
-          <div>
-            <p class="eyebrow">One-click command board</p>
-            <h2>What do you need right now?</h2>
-            <p>These are cockpit shortcuts. Each one will become a deeper tool as the Atlas grows.</p>
-          </div>
-          <span class="build-badge">Release 1.2</span>
-        </div>
-        <div class="quick-grid">
-          <a class="quick-tile hot" href="#fleet-command"><span>🚀</span><strong>Choose a ship</strong><p>Pick from combat, cargo, salvage, medical, exploration, or utility.</p></a>
-          <a class="quick-tile" href="#arccorp-details"><span>🪐</span><strong>Go to Wala</strong><p>ArcCorp moon starter queue and future outpost notes.</p></a>
-          <a class="quick-tile" href="#toolbox"><span>🏥</span><strong>Find medical</strong><p>Hospital and respawn finder shell.</p></a>
-          <a class="quick-tile" href="#toolbox"><span>🛒</span><strong>Buy an item</strong><p>Weapons, armor, tools, components lookup shell.</p></a>
-          <a class="quick-tile" href="#toolbox"><span>♻</span><strong>Run salvage</strong><p>Vulture, Reclaimer, Moth planning lane.</p></a>
-          <a class="quick-tile" href="#toolbox"><span>📦</span><strong>Plan cargo</strong><p>Hull, Ironclad, Railen, Hermes, Prowler route notes.</p></a>
-        </div>
+      <section class="quick-board">
+        <article class="quick-card" data-jump="fleet"><span>🚀</span><h3>Fleet Command</h3><p>Your hangar, organized by mission role.</p></article>
+        <article class="quick-card" data-jump="atlas"><span>🌌</span><h3>ArcCorp Framework</h3><p>Area18, Baijini Point, Wala, and Lyria starter map.</p></article>
+        <article class="quick-card" data-jump="tools"><span>🧰</span><h3>Toolbox</h3><p>Find medical, refineries, shops, and mission prep.</p></article>
+        <article class="quick-card" data-jump="planner"><span>🎯</span><h3>Mission Planner</h3><p>Pick a gameplay loop and get ship recommendations.</p></article>
       </section>
 
-      <section id="fleet-command" class="panel">
-        <div class="section-head split">
-          <div>
-            <p class="eyebrow">Personal hangar</p>
-            <h2>Fleet Command</h2>
-            <p>Current fleet only: Pitbull and Tuilui removed; Corsair, Cutlass Black, Ares Inferno, and Arrow added.</p>
-          </div>
-          <div class="filter-bar" role="group" aria-label="Fleet filters">
-            <button class="filter active" data-filter="All">All</button>
-            <button class="filter" data-filter="Combat">Combat</button>
-            <button class="filter" data-filter="Cargo">Cargo</button>
-            <button class="filter" data-filter="Industry">Industry</button>
-            <button class="filter" data-filter="Exploration">Exploration</button>
-            <button class="filter" data-filter="Medical">Medical</button>
-            <button class="filter" data-filter="Utility">Utility</button>
-            <button class="filter" data-filter="Support">Support</button>
-          </div>
+      <section class="panel" id="fleet">
+        <div class="panel-header">
+          <div><p class="eyebrow">Fleet Command</p><h2>Your Operational Hangar</h2></div>
+          <div id="roleFilters" class="chips"></div>
         </div>
-        <div id="fleetGrid" class="fleet-grid"></div>
-      </section>
-
-      <section id="systems" class="panel">
-        <div class="section-head">
-          <p class="eyebrow">Atlas navigation</p>
-          <h2>Star Systems</h2>
-          <p>Stanton gets built first because it gives the most daily value.</p>
-        </div>
-        <div class="card-grid four">
-          <a class="nav-card hot" href="#stanton"><strong>Stanton</strong><span>Primary build target</span></a>
-          <a class="nav-card" href="#pyro"><strong>Pyro</strong><span>Expansion target</span></a>
-          <a class="nav-card" href="#nyx"><strong>Nyx</strong><span>Future expansion</span></a>
-          <a class="nav-card muted" href="#future"><strong>Future Systems</strong><span>Holding pattern</span></a>
+        <div class="fleet-layout">
+          <div id="fleetGrid" class="fleet-grid"></div>
+          <aside id="shipDetail" class="detail-panel">
+            <p class="eyebrow">Select a ship</p>
+            <h3>Ship detail panel</h3>
+            <p>Click any ship card to view mission profile, checklist, notes, and role lanes.</p>
+          </aside>
         </div>
       </section>
 
-      <section id="stanton" class="panel location-panel">
-        <p class="eyebrow">System priority one</p>
-        <h2>Stanton</h2>
-        <div class="card-grid four">
-          <a class="nav-card" href="#arccorp-details"><strong>ArcCorp</strong><span>Area18, Baijini, Wala, Lyria</span></a>
-          <a class="nav-card" href="#hurston-details"><strong>Hurston</strong><span>Lorville, Everus Harbor, moons</span></a>
-          <a class="nav-card" href="#crusader-details"><strong>Crusader</strong><span>Orison, Seraphim Station, moons</span></a>
-          <a class="nav-card" href="#microtech-details"><strong>microTech</strong><span>New Babbage, Port Tressler, moons</span></a>
+      <section class="panel" id="atlas">
+        <div class="panel-header">
+          <div><p class="eyebrow">Star Atlas</p><h2>ArcCorp Starter Framework</h2></div>
+          <span class="badge">Template for Stanton</span>
         </div>
+        <div id="locationGrid" class="location-grid"></div>
       </section>
 
-      <section id="arccorp-details" class="panel detail-panel">
-        <p class="eyebrow">Next content sprint</p>
-        <h2>ArcCorp Build Queue</h2>
-        <div class="timeline">
-          <div><strong>Wala</strong><span>Outposts, mining notes, cargo, local warnings.</span></div>
-          <div><strong>Baijini Point</strong><span>Station services, ship claims, shops, medical status.</span></div>
-          <div><strong>Area18</strong><span>Landing, shopping, transit, mission prep.</span></div>
-          <div><strong>Lyria</strong><span>Outposts, mining, surface routes.</span></div>
+      <section class="panel" id="tools">
+        <div class="panel-header">
+          <div><p class="eyebrow">Commander Tools</p><h2>Decision Tools Shell</h2></div>
+          <span class="badge">Data-driven next</span>
         </div>
+        <div class="tool-grid" id="toolGrid"></div>
       </section>
 
-      <section id="toolbox" class="panel">
-        <div class="section-head">
-          <p class="eyebrow">Commander's Toolbox</p>
-          <h2>Tools built for “I need it now.”</h2>
+      <section class="panel" id="planner">
+        <div class="panel-header">
+          <div><p class="eyebrow">Mission Planner</p><h2>Choose Tonight's Operation</h2></div>
         </div>
-        <div class="card-grid four">
-          <article class="tool-card"><strong>Where can I buy this?</strong><span>Weapons, components, armor, tools.</span></article>
-          <article class="tool-card"><strong>Nearest medical</strong><span>Hospitals, clinics, respawn, medbeds.</span></article>
-          <article class="tool-card"><strong>Refinery finder</strong><span>Mining loops and station services.</span></article>
-          <article class="tool-card"><strong>Ship role picker</strong><span>Pick the right ship for the job.</span></article>
-          <article class="tool-card"><strong>Salvage planner</strong><span>Vulture, Reclaimer, cargo transfer notes.</span></article>
-          <article class="tool-card"><strong>Cargo route notes</strong><span>Buy/sell reminders and risk flags.</span></article>
-          <article class="tool-card"><strong>Loadout locker</strong><span>Your preferred weapons and components.</span></article>
-          <article class="tool-card"><strong>Patch tracker</strong><span>What changed and what needs recheck.</span></article>
-        </div>
+        <div id="missionButtons" class="chips large"></div>
+        <div id="missionOutput" class="mission-output"></div>
       </section>
 
-      <section id="release-log" class="panel">
-        <div class="section-head">
-          <p class="eyebrow">Release plan</p>
-          <h2>Current build path</h2>
+      <section class="panel" id="roadmap">
+        <div class="panel-header">
+          <div><p class="eyebrow">Build Plan</p><h2>Next Releases</h2></div>
         </div>
-        <ol class="release-list">
-          <li><strong>Release 1.2 Command Center Upgrade</strong><span>Better dashboard, Quick Board, stronger daily-use layout.</span></li>
-          <li><strong>Release 1.3 Ship Detail Pages</strong><span>Guardian MX, Corsair, Cutlass Black, Ares Inferno, Reclaimer, Vulture.</span></li>
-          <li><strong>Release 1.4 ArcCorp Starter</strong><span>Wala, Baijini Point, Area18, Lyria structure.</span></li>
-          <li><strong>Release 1.5 Toolbox Data</strong><span>Medical, refinery, buy/sell, weapons, components.</span></li>
+        <ol class="timeline">
+          <li><strong>2.1 Fleet Pages</strong><span>Dedicated generated pages/panels for each owned ship.</span></li>
+          <li><strong>2.2 ArcCorp Complete</strong><span>Area18, Baijini Point, Wala, and Lyria service pages.</span></li>
+          <li><strong>2.3 Search Index</strong><span>One searchable data layer for ships, places, and tools.</span></li>
+          <li><strong>2.4 Commander Notes</strong><span>Personal notes and favorites stored in browser.</span></li>
         </ol>
       </section>
-
-      <footer>Disko's Commander's Atlas • Built for fast decisions in the 'verse.</footer>
     </main>
   </div>
-  <script src="app.js"></script>
+
+  <script src="data/fleet.js"></script>
+  <script src="data/atlas.js"></script>
+  <script src="assets/js/app.js"></script>
 </body>
 </html>
