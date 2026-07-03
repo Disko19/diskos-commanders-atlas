@@ -1,41 +1,38 @@
 const fleet = [
-  { name: "A1 Spirit", role: "Bomber / strike support", group: "Combat", priority: "Specialized", checklist: "Confirm target, arm payload, keep exit vector ready." },
-  { name: "Asgard", role: "Dropship", group: "Combat", priority: "Team", checklist: "Load troops, mark LZ, keep engines hot." },
-  { name: "Ares Inferno", role: "Heavy gunship / anti-large", group: "Combat", priority: "Heavy hitter", checklist: "Check ammo, pick big targets, avoid knife fights." },
-  { name: "Arrow", role: "Light fighter", group: "Combat", priority: "Interceptor", checklist: "Use speed, stay unpredictable, don't trade armor." },
-  { name: "F7CC-M Super Hornet", role: "Medium fighter", group: "Combat", priority: "Workhorse", checklist: "Balanced loadout, protect wingmen, pressure targets." },
-  { name: "Guardian MX", role: "Heavy fighter", group: "Combat", priority: "Favorite", checklist: "Verify weapons, shields, quantum fuel, mission type." },
-  { name: "Sabre", role: "Stealth fighter", group: "Combat", priority: "Specialist", checklist: "Low signature approach, strike first, reset often." },
-  { name: "Hermes", role: "Cargo hauler", group: "Cargo", priority: "Hauler", checklist: "Check route risk, cargo value, station services." },
-  { name: "Hull B", role: "Cargo hauler", group: "Cargo", priority: "Medium freight", checklist: "Confirm cargo grid, sell point, escort need." },
-  { name: "Hull C", role: "Heavy cargo", group: "Cargo", priority: "Big freight", checklist: "Docking route, cargo terminals, protection plan." },
-  { name: "Ironclad", role: "Heavy freight / armored transport", group: "Cargo", priority: "Armored logistics", checklist: "Crew plan, cargo plan, ground transfer plan." },
-  { name: "Prowler Utility", role: "Cargo hauler", group: "Cargo", priority: "Utility cargo", checklist: "Confirm cargo role and route before launch." },
-  { name: "Railen", role: "Alien cargo", group: "Cargo", priority: "Xi'an freight", checklist: "Route planning and terminal compatibility notes." },
-  { name: "Moth", role: "Industrial salvage", group: "Industry", priority: "Industrial salvage", checklist: "Salvage target, cargo transfer, sell destination." },
-  { name: "Reclaimer", role: "Heavy salvage", group: "Industry", priority: "Crew money", checklist: "Crew roles, boxes, risk zone, unload plan." },
-  { name: "ROC", role: "Ground mining", group: "Industry", priority: "Surface mining", checklist: "Load vehicle, scan moon, watch weather and pirates." },
-  { name: "Vulture", role: "Solo salvage", group: "Industry", priority: "Solo earner", checklist: "Empty grid, safe target, sell before greed wins." },
-  { name: "Golem OX", role: "Industrial / utility", group: "Industry", priority: "Utility industrial", checklist: "Assign role after spec verification." },
-  { name: "Corsair", role: "Explorer / gunship", group: "Exploration", priority: "Armed explorer", checklist: "Long range route, crew seats, guns, supplies." },
-  { name: "Zeus Mk II ES", role: "Explorer", group: "Exploration", priority: "Explorer", checklist: "Survey plan, fuel, supplies, quiet route." },
-  { name: "C8R Pisces", role: "Medical shuttle", group: "Medical", priority: "Fast rescue", checklist: "Med supplies, pickup marker, safe landing zone." },
-  { name: "Ursa Medivac", role: "Ground medical", group: "Medical", priority: "Surface rescue", checklist: "Load into carrier, plan ground approach, extract casualty." },
-  { name: "Cutter", role: "Daily driver", group: "Utility", priority: "Convenience", checklist: "Quick claim, small run, simple errands." },
-  { name: "Cutlass Black", role: "Multi-role utility", group: "Utility", priority: "Classic daily", checklist: "Cargo, combat, vehicle, or rescue—pick the job first." },
-  { name: "ATLS", role: "Cargo loader", group: "Utility", priority: "Cargo support", checklist: "Use for loading, moving, and hangar workflow." },
-  { name: "Dragonfly Black", role: "Grav-lev scout", group: "Utility", priority: "Mobility", checklist: "Pack for surface scouting and quick movement." },
-  { name: "PTV", role: "Ground runabout", group: "Utility", priority: "Local transport", checklist: "For hangars, bases, and unserious greatness." },
-  { name: "Starfarer Gemini", role: "Refueling / military tanker", group: "Support", priority: "Fuel support", checklist: "Fuel plan, escort plan, rendezvous point." }
+  { name:"A1 Spirit", group:"Combat", role:"Bomber / strike platform", priority:"Strike", checklist:"Bombing runs, fast strike work, and precision pressure." },
+  { name:"Asgard", group:"Combat", role:"Dropship", priority:"Dropship", checklist:"Troop movement, hot insertions, and heavy landing operations." },
+  { name:"ATLS", group:"Utility", role:"Cargo support exosuit", priority:"Utility", checklist:"Move freight, support hangar work, speed up loading." },
+  { name:"Ares Inferno", group:"Combat", role:"Heavy ballistic fighter", priority:"Anti-large", checklist:"Bring the big gun when something large needs regretting its choices." },
+  { name:"Arrow", group:"Combat", role:"Light fighter", priority:"Interceptor", checklist:"Fast response, dogfighting practice, light patrol." },
+  { name:"C8R Pisces", group:"Medical", role:"Medical shuttle", priority:"Rescue", checklist:"Fast medical response, bunker recovery, quick transport." },
+  { name:"Corsair", group:"Exploration", role:"Armed explorer", priority:"Daily flagship", checklist:"Explore with teeth. Good when the route may get ugly." },
+  { name:"Cutter", group:"Utility", role:"Starter utility ship", priority:"Daily", checklist:"Short hops, errands, low-pressure movement." },
+  { name:"Cutlass Black", group:"Utility", role:"Multi-role workhorse", priority:"Workhorse", checklist:"Bunkers, boxes, light cargo, vehicle hauling, backup fighter." },
+  { name:"Dragonfly Black", group:"Utility", role:"Grav-lev bike", priority:"Ground", checklist:"Surface scouting and fast local movement." },
+  { name:"F7C-M Super Hornet", group:"Combat", role:"Heavy fighter", priority:"Dogfight", checklist:"Combat patrol and hard-nosed fighting." },
+  { name:"Golem OX", group:"Industry", role:"Industrial support", priority:"Industrial", checklist:"Industrial work lane. Details to verify and expand." },
+  { name:"Guardian MX", group:"Combat", role:"Heavy fighter", priority:"Favorite", checklist:"Primary combat platform. Loadout page comes first." },
+  { name:"Hermes", group:"Cargo", role:"Cargo hauler", priority:"Hauler", checklist:"Cargo hauling lane. Kept under Cargo Haulers." },
+  { name:"Hull B", group:"Cargo", role:"Medium cargo hauler", priority:"Trade", checklist:"Mid-size hauling and trade routes." },
+  { name:"Hull C", group:"Cargo", role:"Large cargo hauler", priority:"Bulk", checklist:"Big freight, station-to-station work, serious hauling." },
+  { name:"Ironclad", group:"Cargo", role:"Heavy cargo / assault transport", priority:"Heavy", checklist:"Large cargo, vehicle transport, high-value runs." },
+  { name:"Moth", group:"Industry", role:"Industrial salvage ship", priority:"Salvage", checklist:"Industrial salvage lane. Kept under salvage." },
+  { name:"Prowler Utility", group:"Cargo", role:"Cargo hauler", priority:"Utility Cargo", checklist:"Cargo utility lane. Kept under Cargo Haulers." },
+  { name:"PTV", group:"Utility", role:"Ground vehicle", priority:"Ground", checklist:"Hangar fun, local movement, ground support." },
+  { name:"Railen", group:"Cargo", role:"Alien cargo hauler", priority:"Trade", checklist:"Cargo runs with style. Dedicated trade page later." },
+  { name:"Reclaimer", group:"Industry", role:"Heavy salvage", priority:"Crew Salvage", checklist:"Crew salvage operations and large recovery loops." },
+  { name:"ROC", group:"Industry", role:"Ground mining vehicle", priority:"Mining", checklist:"Gem mining, surface operations, vehicle support." },
+  { name:"Sabre", group:"Combat", role:"Stealth fighter", priority:"Stealth", checklist:"Low-signature combat and patrol." },
+  { name:"Starfarer Gemini", group:"Support", role:"Fuel / military support", priority:"Support", checklist:"Refueling support, fleet operations, heavy logistics." },
+  { name:"Ursa Medivac", group:"Medical", role:"Ground medical rover", priority:"Ground Rescue", checklist:"Ground-side recovery and bunker support." },
+  { name:"Vulture", group:"Industry", role:"Solo salvage", priority:"Solo Salvage", checklist:"Solo salvage loop and fast cleanup jobs." },
+  { name:"Zeus Mk II ES", group:"Exploration", role:"Expedition ship", priority:"Explorer", checklist:"Exploration, scouting, and future route planning." }
 ];
 
+const slug = name => name.replace(/[^a-z0-9]+/gi,"-").replace(/^-|-$/g,"");
 const fleetGrid = document.getElementById("fleetGrid");
 const fleetCount = document.getElementById("fleetCount");
 fleetCount.textContent = fleet.length;
-
-function slug(name) {
-  return name.replace(/[^a-z0-9]+/gi, "-").replace(/^-|-$/g, "");
-}
 
 function renderFleet(filter = "All") {
   fleetGrid.innerHTML = "";
@@ -43,7 +40,6 @@ function renderFleet(filter = "All") {
   ships.forEach(ship => {
     const card = document.createElement("article");
     card.className = "ship-card";
-    card.dataset.group = ship.group;
     card.id = `ship-${slug(ship.name)}`;
     card.innerHTML = `
       <div class="ship-topline"><small>${ship.group}</small><em>${ship.priority}</em></div>
@@ -66,20 +62,22 @@ document.querySelectorAll(".filter").forEach(btn => {
 
 const searchIndex = [
   ...fleet.map(s => ({ title: s.name, meta: `${s.role} • ${s.group} • ${s.checklist}`, target: `#ship-${slug(s.name)}` })),
-  { title: "Combat Patrol", meta: "Guardian MX, Super Hornet, Sabre, Arrow, Ares Inferno", target: "#mission-roles" },
-  { title: "Cargo Run", meta: "Hull C, Ironclad, Hull B, Railen, Hermes, Prowler Utility", target: "#mission-roles" },
-  { title: "Salvage Loop", meta: "Vulture, Reclaimer, Moth", target: "#mission-roles" },
-  { title: "Medical Rescue", meta: "C8R Pisces, Ursa Medivac", target: "#mission-roles" },
-  { title: "Wala", meta: "Stanton → ArcCorp moon • next detailed build", target: "#arccorp-details" },
-  { title: "Baijini Point", meta: "ArcCorp orbital station • next detailed build", target: "#arccorp-details" },
-  { title: "Area18", meta: "ArcCorp landing zone • next detailed build", target: "#arccorp-details" },
-  { title: "Everus Harbor", meta: "Hurston orbital station placeholder", target: "#stanton" },
-  { title: "Seraphim Station", meta: "Crusader orbital station placeholder", target: "#stanton" },
-  { title: "Stanton", meta: "Primary Atlas system build", target: "#stanton" },
-  { title: "Hospital Finder", meta: "Commander's Toolbox", target: "#toolbox" },
-  { title: "Refinery Finder", meta: "Commander's Toolbox", target: "#toolbox" },
-  { title: "AD5B", meta: "Weapon lookup placeholder", target: "#toolbox" },
-  { title: "Salvage Planner", meta: "Vulture, Reclaimer, Moth planning", target: "#toolbox" }
+  { title:"Quick Board", meta:"One-click command board for common tasks", target:"#quick-board" },
+  { title:"Combat Patrol", meta:"Guardian MX, Super Hornet, Sabre, Arrow, Ares Inferno", target:"#fleet-command" },
+  { title:"Cargo Run", meta:"Hull C, Ironclad, Hull B, Railen, Hermes, Prowler Utility", target:"#fleet-command" },
+  { title:"Salvage Loop", meta:"Vulture, Reclaimer, Moth", target:"#toolbox" },
+  { title:"Medical Rescue", meta:"C8R Pisces, Ursa Medivac", target:"#toolbox" },
+  { title:"Wala", meta:"Stanton → ArcCorp moon • next detailed build", target:"#arccorp-details" },
+  { title:"Baijini Point", meta:"ArcCorp orbital station • next detailed build", target:"#arccorp-details" },
+  { title:"Area18", meta:"ArcCorp landing zone • next detailed build", target:"#arccorp-details" },
+  { title:"Lyria", meta:"ArcCorp moon • next detailed build", target:"#arccorp-details" },
+  { title:"Everus Harbor", meta:"Hurston orbital station placeholder", target:"#stanton" },
+  { title:"Seraphim Station", meta:"Crusader orbital station placeholder", target:"#stanton" },
+  { title:"Stanton", meta:"Primary Atlas system build", target:"#stanton" },
+  { title:"Hospital Finder", meta:"Commander's Toolbox", target:"#toolbox" },
+  { title:"Refinery Finder", meta:"Commander's Toolbox", target:"#toolbox" },
+  { title:"AD5B", meta:"Weapon lookup placeholder", target:"#toolbox" },
+  { title:"Salvage Planner", meta:"Vulture, Reclaimer, Moth planning", target:"#toolbox" }
 ];
 
 const search = document.getElementById("search");
@@ -91,7 +89,7 @@ search.addEventListener("input", () => {
   if (!q) { results.classList.remove("open"); return; }
   const matches = searchIndex.filter(item => `${item.title} ${item.meta}`.toLowerCase().includes(q)).slice(0, 10);
   if (!matches.length) {
-    results.innerHTML = `<div class="result"><strong>No match yet</strong><span>Good target for the next build list.</span></div>`;
+    results.innerHTML = `<div class="result"><strong>No match yet</strong><span>Add this to the next build list.</span></div>`;
   } else {
     matches.forEach(item => {
       const a = document.createElement("a");

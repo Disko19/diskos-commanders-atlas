@@ -1,29 +1,26 @@
 # Disko's Commander's Atlas
 
-A cockpit-ready Star Citizen command console built for Commander Disko.
+A live Star Citizen cockpit companion for Commander Disko.
 
 ## Current Release
 
-**Release 1.1 – Fleet Command Starter**
+**Release 1.2 — Command Center Upgrade**
 
-Includes:
-
-- Command Center home screen
+### Added
+- Stronger Command Center layout
+- New Quick Board for common cockpit decisions
 - Updated personal fleet list
-- Pitbull and Tuilui removed
-- Corsair, Cutlass Black, Ares Inferno, and Arrow added
-- Fleet filters by mission role
-- Mission role picker
-- Search index starter
+- Fleet role filters
 - Stanton / ArcCorp build queue
 - Commander's Toolbox shell
+- 907th content intentionally parked for later
 
-## Guiding Rule
+## Upload Files
+Upload these files to GitHub Pages root:
 
-If it does not help Disko fly, fight, haul, mine, salvage, or explore faster, it stays off the bridge.
+- `index.html`
+- `styles.css`
+- `app.js`
+- `README.md`
 
-## Next Releases
-
-- Release 1.2: Dedicated ship pages for Guardian MX, Corsair, Cutlass Black, Reclaimer, and Vulture
-- Release 1.3: Stanton / ArcCorp details: Wala, Baijini Point, Area18, Lyria
-- Release 1.4: Commander's Toolbox tools
+Then commit changes and refresh the live GitHub Pages site after deployment.
