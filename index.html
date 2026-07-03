@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Disko's Commander's Atlas v002</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="emblem"><span>907</span><small>th</small></div>
+      <div>
+        <h1>Disko's Commander's Atlas</h1>
+        <p>Command reference for Star Citizen pilots, haulers, salvagers, medics, and troublemakers.</p>
+      </div>
+    </div>
+    <div class="search-wrap">
+      <input id="search" type="search" placeholder="Quick jump: Wala, Everus, Vulture, AD5B, hospital, refinery..." autocomplete="off" />
+      <div id="results" class="results" aria-live="polite"></div>
+    </div>
+  </header>
+
+  <main class="layout">
+    <nav class="sidebar" aria-label="Atlas navigation">
+      <a href="#dashboard">Command Deck</a>
+      <a href="#quick-ref">Quick Lookup</a>
+      <a href="#systems">Systems</a>
+      <a href="#stanton">Stanton</a>
+      <a href="#arccorp">ArcCorp</a>
+      <a href="#wala">Wala</a>
+      <a href="#hurston">Hurston</a>
+      <a href="#crusader">Crusader</a>
+      <a href="#microtech">microTech</a>
+      <a href="#pyro">Pyro</a>
+      <a href="#nyx">Nyx</a>
+      <a href="#fleet">Disko's Fleet</a>
+      <a href="#industry">Industry</a>
+      <a href="#combat">Combat</a>
+      <a href="#medical">Medical</a>
+      <a href="#patch-log">Patch Log</a>
+    </nav>
+
+    <section class="content">
+      <section id="dashboard" class="hero card">
+        <p class="eyebrow">Build 002 • cockpit-ready</p>
+        <h2>One Atlas. Two jobs: find answers fast, and keep the whole verse organized.</h2>
+        <p>This version expands v001 into a working command deck: better search, fleet-role cards, system pages, quick lookup panels, and a patch-aware structure. It is still a starter build, but now it has bones strong enough to carry the whole project.</p>
+        <div class="button-row">
+          <a class="button" href="#quick-ref">Open Quick Lookup</a>
+          <a class="button secondary" href="#fleet">Open Fleet Board</a>
+          <a class="button secondary" href="#wala">Open Wala</a>
+        </div>
+        <div class="alert"><strong>Current working rule:</strong> location/item availability must be verified against Alpha 4.8.3 before we mark it final.</div>
+      </section>
+
+      <section id="quick-ref" class="card">
+        <div class="section-head"><div><p class="eyebrow">Three-click answers</p><h2>Quick Lookup</h2></div><span class="status hot">Most used</span></div>
+        <div class="grid quick-grid">
+          <article><h3>Nearest hospital?</h3><p>Search <strong>hospital</strong>, <strong>clinic</strong>, <strong>respawn</strong>, or a station name. Final entries will show bed tier, imprint status, and nearby hangars.</p><div class="tags"><span class="tag med">Medical</span><span class="tag respawn">Respawn</span></div></article>
+          <article><h3>Need refinery?</h3><p>Search <strong>refinery</strong> or a Lagrange station. Station cards will show refinery deck, cargo route, and best exit plan.</p><div class="tags"><span class="tag industrial">Refinery</span><span class="tag cargo">Cargo</span></div></article>
+          <article><h3>Where can I buy it?</h3><p>Search weapons, components, armor, tractor beams, ship guns, or shops. Item pages will link back to verified sellers.</p><div class="tags"><span class="tag combat">Weapons</span><span class="tag">Components</span></div></article>
+          <article><h3>Pirates on your tail?</h3><p>Use station pages for repair/refuel/rearm, armistice notes, and escape routes. No wall of text. Just the answer.</p><div class="tags"><span class="tag warn">Danger</span><span class="tag">Fast route</span></div></article>
+        </div>
+      </section>
+
+      <section id="systems" class="card">
+        <h2>Systems Index</h2>
+        <div class="subcards">
+          <a class="mini-card" href="#stanton"><strong>Stanton</strong><span>Core live workspace</span></a>
+          <a class="mini-card" href="#pyro"><strong>Pyro</strong><span>Lawless survival ops</span></a>
+          <a class="mini-card" href="#nyx"><strong>Nyx</strong><span>Levski / refinery lore + future</span></a>
+          <a class="mini-card muted" href="#patch-log"><strong>Patch tracker</strong><span>What changed, what to verify</span></a>
+        </div>
+      </section>
+
+      <section id="stanton" class="card system-card">
+        <p class="eyebrow">System</p><h2>Stanton</h2>
+        <p>The first full build target. Stanton gets the complete treatment first: planets, moons, stations, landing zones, services, hospitals, refineries, combat routes, trade hubs, and vehicle pads.</p>
+        <div class="planet-links"><a href="#arccorp">ArcCorp</a><a href="#hurston">Hurston</a><a href="#microtech">microTech</a><a href="#crusader">Crusader</a></div>
+      </section>
+
+      <section id="arccorp" class="card">
+        <p class="eyebrow">Stanton planet</p><h2>ArcCorp</h2>
+        <p>City-world hub. Build order: Wala → Lyria → Area18 → Baijini Point → shops/components/weapons → mission routes.</p>
+        <div class="subcards">
+          <a class="mini-card" href="#wala"><strong>Wala</strong><span>Moon quick page</span></a>
+          <a class="mini-card muted" href="#lyria"><strong>Lyria</strong><span>Coming next</span></a>
+          <a class="mini-card muted" href="#area18"><strong>Area18</strong><span>Landing zone buildout</span></a>
+          <a class="mini-card muted" href="#baijini"><strong>Baijini Point</strong><span>Station services</span></a>
+        </div>
+      </section>
+
+      <section id="wala" class="card location-card">
+        <div class="section-head"><div><p class="eyebrow">Stanton → ArcCorp → Moon</p><h2>Wala</h2></div><span class="status">Template page</span></div>
+        <p>Wala remains the test case for the Atlas flow: moon overview, outposts, services, resources, trade notes, mission notes, and nearby links without digging.</p>
+        <h3>At-a-glance</h3>
+        <div class="tags"><span class="tag">Outposts</span><span class="tag industrial">Mining</span><span class="tag cargo">Cargo</span><span class="tag">Surface ops</span><span class="tag warn">Verify 4.8.3</span></div>
+        <div class="grid two">
+          <article><h4>Outposts</h4><p>Surface locations, pads, terminals, shop availability, local inventory, and approach notes.</p></article>
+          <article><h4>Services</h4><p>Vehicle pads, refuel/repair/rearm, inventory, commodity terminals, and nearby station support.</p></article>
+          <article><h4>Resources</h4><p>Mining/resource notes and routes to refineries or sell points once verified.</p></article>
+          <article><h4>Warnings</h4><p>Hostile activity, rough terrain, risky approaches, and patch-specific gotchas.</p></article>
+        </div>
+      </section>
+
+      <section id="hurston" class="card"><p class="eyebrow">Stanton planet</p><h2>Hurston</h2><p>Placeholder for Lorville, Everus Harbor, Aberdeen, Arial, Ita, Magda, bounty routes, heavy industry, and surface operations.</p><div class="tags"><span class="tag combat">Bounty</span><span class="tag industrial">Industry</span><span class="tag med">Medical</span></div></section>
+      <section id="microtech" class="card"><p class="eyebrow">Stanton planet</p><h2>microTech</h2><p>Placeholder for New Babbage, Port Tressler, Calliope, Clio, Euterpe, cold-weather ops, distribution centers, and trade routes.</p><div class="tags"><span class="tag med">Medical</span><span class="tag cargo">Cargo</span><span class="tag">Cold ops</span></div></section>
+      <section id="crusader" class="card"><p class="eyebrow">Stanton planet</p><h2>Crusader</h2><p>Placeholder for Orison, Seraphim Station, Yela, Daymar, Cellin, bounty routes, and gas-giant logistics.</p><div class="tags"><span class="tag combat">Combat</span><span class="tag cargo">Cargo</span><span class="tag">Cloud city</span></div></section>
+      <section id="pyro" class="card"><p class="eyebrow">System</p><h2>Pyro</h2><p>Future survival-focused buildout: unsafe routes, hostile stations, fuel planning, repair options, gang territory, and emergency exits.</p><div class="tags"><span class="tag warn">Lawless</span><span class="tag">Fuel planning</span><span class="tag combat">Escort recommended</span></div></section>
+      <section id="nyx" class="card"><p class="eyebrow">System</p><h2>Nyx</h2><p>Future buildout for Levski, refinery notes, hidden routes, and 907th lore hooks.</p><div class="tags"><span class="tag industrial">Refinery</span><span class="tag">Levski</span><span class="tag">Future</span></div></section>
+
+      <section id="fleet" class="card">
+        <div class="section-head"><div><p class="eyebrow">Personal command board</p><h2>Disko's Fleet</h2></div><span class="status hot">New in v002</span></div>
+        <p>Starter role board for your owned ships. These cards are built for fast decisions: what to pull, what job it serves, and where we need a loadout page next.</p>
+        <div class="fleet-grid">
+          <article><h3>Cargo Haulers</h3><p>Hermes, Hull B, Hull C, Ironclad, Railen, Prowler Utility, Starfarer Gemini.</p><span class="tag cargo">Cargo</span></article>
+          <article><h3>Industrial / Salvage</h3><p>Reclaimer, Vulture, Moth, ROC, Golem Ox, ATLS.</p><span class="tag industrial">Industry</span></article>
+          <article><h3>Combat / Escort</h3><p>F7C-M Super Hornet, Sabre, Guardian MX, Asgard, Pittbull, Dragonfly Black.</p><span class="tag combat">Combat</span></article>
+          <article><h3>Medical / Rescue</h3><p>C8R Pisces, Ursa Medivac, Zeus Mk II ES.</p><span class="tag med">Medical</span></article>
+          <article><h3>Utility / Runabout</h3><p>Cutter, A1 Spirit, PTV, Tuilui.</p><span class="tag">Utility</span></article>
+          <article><h3>Next loadout targets</h3><p>Guardian MX weapons, cargo route choices, salvage workflow, and dropship deployment notes.</p><span class="tag warn">Build next</span></article>
+        </div>
+      </section>
+
+      <section id="industry" class="card"><p class="eyebrow">Gameplay loop</p><h2>Industry</h2><p>Mining, salvage, cargo, refining, trading, freight contracts, and recovery ops. This section will link ship roles to places: Vulture/Reclaimer to salvage sites, ROC to moon mining, Hull series to station logistics.</p></section>
+      <section id="combat" class="card"><p class="eyebrow">Gameplay loop</p><h2>Combat</h2><p>Bounty hunting, escort, mercenary operations, dropship support, hostile route warnings, and ship loadouts. Guardian MX and Super Hornet pages come first.</p></section>
+      <section id="medical" class="card"><p class="eyebrow">Gameplay loop</p><h2>Medical</h2><p>C8R and Ursa Medivac operating notes, hospital/clinic lookup, respawn planning, rescue route cards, and emergency extraction checklist.</p></section>
+
+      <section id="patch-log" class="card">
+        <h2>Patch Log</h2>
+        <ul>
+          <li><strong>Build 002:</strong> expanded navigation, command deck, fleet board, industry/combat/medical loops, stronger search index, and 4.8.3 verification warning.</li>
+          <li><strong>Build 001:</strong> Atlas shell, search, navigation, quick-ref section, Stanton/ArcCorp/Wala starter pages.</li>
+          <li><strong>Next:</strong> turn Wala from template into real data, then build Baijini Point, Area18, Everus Harbor, and Guardian MX loadout page.</li>
+        </ul>
+      </section>
+    </section>
+  </main>
+  <button id="topBtn" title="Back to top">↑</button>
+  <script src="app.js"></script>
+</body>
+</html>
