@@ -1,26 +1,31 @@
 # Disko's Commander's Atlas
 
-Release 1.0 Foundations — live Star Citizen command companion for Commander Disko.
+A personal Star Citizen command console for Commander Disko.
 
-## What's included
-- Command Center home page
-- Updated personal fleet list
-- Fleet Command grouped by mission role
-- Star Systems framework
-- Quick Jump shortcuts
+## Release 1.0 Foundations
+
+This release focuses on the permanent structure:
+
+- Command Center homepage
+- Universal search shell
+- Personal Fleet Command board
+- Stanton-first Atlas framework
 - Commander's Toolbox shell
-- Search index
-- 907th content intentionally excluded for now
+- No 907th organization content unless added later
 
-## Fleet change log
-Removed: Pitbull, Tuilui
-Added: Corsair, Cutlass Black, Ares Inferno, Arrow
+## Fleet Update
 
-## Upload to GitHub
-Upload these files to the repository root:
+Removed: Pitbull, Tuilui.
+
+Added: Corsair, Cutlass Black, Ares Inferno, Arrow.
+
+## Upload Instructions
+
+Upload these files to the GitHub repository root:
+
 - index.html
 - styles.css
 - app.js
 - README.md
 
-Then commit changes. GitHub Pages will update automatically.
+Commit changes and GitHub Pages will update the live site.
