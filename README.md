@@ -1,23 +1,26 @@
-# Disko's Commander's Atlas v002
+# Disko's Commander's Atlas
 
-A local, cockpit-ready Star Citizen reference site.
+Release 1.0 Foundations — live Star Citizen command companion for Commander Disko.
 
-## How to use
-1. Unzip the folder.
-2. Double-click `index.html`.
-3. Use the search bar or left navigation while playing.
+## What's included
+- Command Center home page
+- Updated personal fleet list
+- Fleet Command grouped by mission role
+- Star Systems framework
+- Quick Jump shortcuts
+- Commander's Toolbox shell
+- Search index
+- 907th content intentionally excluded for now
 
-## Build 002 adds
-- Expanded command deck
-- Quick lookup panels
-- Systems index
-- Disko's Fleet role board
-- Industry, Combat, and Medical loop sections
-- Stronger search index
-- Patch-aware verification note for Alpha 4.8.3
+## Fleet change log
+Removed: Pitbull, Tuilui
+Added: Corsair, Cutlass Black, Ares Inferno, Arrow
 
-## Next build targets
-1. Fill Wala with verified outposts/services.
-2. Build Baijini Point and Area18.
-3. Build Everus Harbor.
-4. Add Guardian MX loadout page.
+## Upload to GitHub
+Upload these files to the repository root:
+- index.html
+- styles.css
+- app.js
+- README.md
+
+Then commit changes. GitHub Pages will update automatically.
