@@ -13,7 +13,7 @@
         <div class="brand-mark">DCA</div>
         <div>
           <h1>Disko's Commander's Atlas</h1>
-          <p>Release 1.3 • App Structure</p>
+          <p>Release 1.4 • Fleet Data Core</p>
         </div>
       </div>
       <nav class="main-nav" aria-label="Primary navigation">
@@ -51,16 +51,16 @@
           <article class="command-card primary">
             <span class="label">Current release</span>
             <strong>1.3 Application Structure</strong>
-            <p>The project now has dedicated folders for assets and data, so we can scale without turning the site into a junk drawer.</p>
+            <p>Fleet Command now uses richer ship data, detail panels, role filters, and mission-ready checklists.</p>
           </article>
-          <article class="mini-card"><span>Next build</span><strong>Fleet detail pages</strong><p>Guardian MX, Corsair, Cutlass Black, Ares Inferno, Vulture, Reclaimer.</p></article>
+          <article class="mini-card"><span>Next build</span><strong>Ship detail panels</strong><p>Guardian MX, Corsair, Cutlass Black, Ares Inferno, Vulture, Reclaimer and every ship in your hangar now open into detail views.</p></article>
           <article class="mini-card"><span>Content lane</span><strong>ArcCorp starter</strong><p>Wala, Baijini Point, Area18, and Lyria.</p></article>
         </div>
       </section>
 
       <section class="status-grid">
         <article class="panel stat"><span>Fleet assets</span><strong id="fleetCount">28</strong><p>Personal hangar only.</p></article>
-        <article class="panel stat"><span>Data files</span><strong>2</strong><p>Fleet and Atlas data split out.</p></article>
+        <article class="panel stat"><span>Data files</span><strong>3</strong><p>Fleet, Atlas, and role logic in place.</p></article>
         <article class="panel stat"><span>Build focus</span><strong>Stanton</strong><p>ArcCorp first.</p></article>
         <article class="panel stat"><span>Org content</span><strong>Parked</strong><p>No 907th section.</p></article>
       </section>
@@ -68,7 +68,7 @@
       <section id="mission-board" class="panel">
         <div class="section-head split">
           <div><p class="eyebrow">Cockpit shortcuts</p><h2>Mission Board</h2><p>Pick the thing you want to do tonight. The Atlas should take you straight to the useful answer.</p></div>
-          <span class="build-badge">Release 1.3</span>
+          <span class="build-badge">Release 1.4</span>
         </div>
         <div class="quick-grid">
           <a class="quick-tile hot" href="#fleet-command"><span>🚀</span><strong>Choose a ship</strong><p>Filter by combat, cargo, salvage, medical, exploration, utility, or support.</p></a>
@@ -82,10 +82,10 @@
 
       <section id="fleet-command" class="panel">
         <div class="section-head split">
-          <div><p class="eyebrow">Personal hangar</p><h2>Fleet Command</h2><p>Fleet data now lives in <code>data/fleet.js</code>, which makes updates cleaner from here on out.</p></div>
+          <div><p class="eyebrow">Personal hangar</p><h2>Fleet Command</h2><p>Click any ship to open its operational card: role, best-use lane, readiness, and next build notes.</p></div>
           <div id="fleetFilters" class="filter-bar" role="group" aria-label="Fleet filters"></div>
         </div>
-        <div id="fleetGrid" class="fleet-grid"></div>
+        <div class="fleet-layout"><div id="fleetGrid" class="fleet-grid"></div><aside id="shipDetail" class="ship-detail"><p class="eyebrow">Ship detail</p><h3>Select a ship</h3><p>Pick a ship from Fleet Command to open its operation card.</p></aside></div>
       </section>
 
       <section id="atlas" class="panel">
@@ -127,14 +127,14 @@
       <section id="build-plan" class="panel">
         <div class="section-head"><p class="eyebrow">Release plan</p><h2>Current build path</h2></div>
         <ol class="release-list">
-          <li><strong>Release 1.3 Application Structure</strong><span>Root index, assets folder, data folder, cleaner JS modules for fleet and location records.</span></li>
-          <li><strong>Release 1.4 Fleet Detail Pages</strong><span>First real ship pages: Guardian MX, Corsair, Cutlass Black, Ares Inferno, Vulture, Reclaimer.</span></li>
+          <li><strong>Release 1.4 Fleet Data Core</strong><span>Root index, assets folder, data folder, cleaner JS modules for fleet and location records.</span></li>
+          <li><strong>Release 1.4 Fleet Detail Pages</strong><span>First real ship pages: Guardian MX, Corsair, Cutlass Black, Ares Inferno, Vulture, Reclaimer and every ship in your hangar now open into detail views.</span></li>
           <li><strong>Release 1.5 ArcCorp Starter</strong><span>Wala, Baijini Point, Area18, and Lyria detail cards.</span></li>
           <li><strong>Release 1.6 Toolbox Data</strong><span>Medical, refinery, buy/sell, weapons, components, and loadout locker records.</span></li>
         </ol>
       </section>
 
-      <footer>Disko's Commander's Atlas • Built for fast cockpit reference • Release 1.3</footer>
+      <footer>Disko's Commander's Atlas • Built for fast cockpit reference • Release 1.4</footer>
     </main>
   </div>
   <script src="data/fleet.js"></script>

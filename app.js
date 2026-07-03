@@ -1,39 +1,27 @@
 # Disko's Commander's Atlas
 
-Release 1.3 — Application Structure
+Release 1.4 — Fleet Data Core
 
-This release changes the Atlas from a handful of loose files into a simple GitHub Pages application structure.
+A live Star Citizen command reference for Commander Disko.
 
-## Upload structure
+## Upload notes
 
-Keep `index.html` at the root of the repository.
+Upload the full extracted folder contents to GitHub Pages:
 
-Upload these folders and files together:
+- `index.html`
+- `assets/`
+- `data/`
+- `docs/`
+- `README.md`
 
-```text
-index.html
-README.md
-assets/
-  css/styles.css
-  js/app.js
-data/
-  fleet.js
-  atlas.js
-docs/
-```
+## Release 1.4 changes
 
-## Current scope
+- Fleet Command now uses richer ship data.
+- Every ship opens a detail panel.
+- Ship records include readiness, best-use lane, checklist, and next work item.
+- Search can jump directly to ship cards and select them.
+- 907th content remains parked.
 
-- Disko-first command center
-- No 907th section for now
-- Personal fleet only
-- Fleet data separated into `data/fleet.js`
-- Location and toolbox data separated into `data/atlas.js`
-- App behavior moved into `assets/js/app.js`
-- Styling moved into `assets/css/styles.css`
+## Next target
 
-## Next releases
-
-- Release 1.4: Fleet detail pages
-- Release 1.5: ArcCorp starter pages
-- Release 1.6: Toolbox data records
+Release 1.5 — ArcCorp Starter: Wala, Baijini Point, Area18, and Lyria structure.
