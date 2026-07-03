@@ -1,26 +1,13 @@
-# Disko's Commander's Atlas
+# Atlas Roadmap
 
-A live Star Citizen cockpit companion for Commander Disko.
+## Release 1.3 — Application Structure
+Complete.
 
-## Current Release
+## Release 1.4 — Fleet Detail Pages
+Build first detail pages for Guardian MX, Corsair, Cutlass Black, Ares Inferno, Vulture, and Reclaimer.
 
-**Release 1.2 — Command Center Upgrade**
+## Release 1.5 — ArcCorp Starter
+Add structured cards for Wala, Baijini Point, Area18, and Lyria.
 
-### Added
-- Stronger Command Center layout
-- New Quick Board for common cockpit decisions
-- Updated personal fleet list
-- Fleet role filters
-- Stanton / ArcCorp build queue
-- Commander's Toolbox shell
-- 907th content intentionally parked for later
-
-## Upload Files
-Upload these files to GitHub Pages root:
-
-- `index.html`
-- `styles.css`
-- `app.js`
-- `README.md`
-
-Then commit changes and refresh the live GitHub Pages site after deployment.
+## Release 1.6 — Toolbox Data
+Add first records for medical, refinery, buy/sell, weapons, components, and loadout locker.
