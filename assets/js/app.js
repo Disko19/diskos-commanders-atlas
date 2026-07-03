@@ -25,7 +25,7 @@ function renderFleet(){
 }
 function selectShip(name){
  selectedShip=fleet.find(s=>s.name===name); renderFleet();
- $('#shipDetail').innerHTML=`<p class="eyebrow">${selectedShip.lane}</p><h3>${selectedShip.name}</h3><p>${selectedShip.notes}</p><ul class="detail-list"><li><strong>Role:</strong> ${selectedShip.role}</li><li><strong>Crew:</strong> ${selectedShip.crew}</li><li><strong>Checklist:</strong> Loadout, fuel, repair, med supplies, route, extraction plan.</li><li><strong>Next:</strong> Build dedicated ${selectedShip.name} operating page.</li></ul>`;
+ $('#shipDetail').innerHTML=`<p class="eyebrow">${selectedShip.lane}</p><h3>${selectedShip.name}</h3><p>${selectedShip.notes}</p><ul class="detail-list"><li><strong>Role:</strong> ${selectedShip.role}</li><li><strong>Crew:</strong> ${selectedShip.crew}</li><li><strong>Mission Fit:</strong> ${selectedShip.missionFit || 'General operations and personal fleet planning.'}</li><li><strong>Checklist:</strong> Loadout, fuel, repair, med supplies, route, extraction plan.</li><li><strong>Next:</strong> Build dedicated ${selectedShip.name} operating page.</li></ul>`;
  $('#shipDetail').scrollIntoView({behavior:'smooth',block:'nearest'});
 }
 function renderLocations(){
@@ -59,6 +59,6 @@ function bindSearch(){
  $('#clearSearch').addEventListener('click',()=>{input.value='';$('#searchResults').innerHTML='';input.focus();});
 }
 function bindQuickCards(){
- $$('.quick-card').forEach(card=>card.addEventListener('click',()=>{location.hash=card.dataset.jump;}));
+ $$('[data-jump]').forEach(card=>card.addEventListener('click',()=>{location.hash=card.dataset.jump;}));
 }
 init();

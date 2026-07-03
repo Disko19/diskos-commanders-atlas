@@ -1,24 +1,31 @@
 # Disko's Commander's Atlas
 
-Release 2.0 — Command Application Core
+## Release 3.0 — Bridge OS
 
-This release moves the Atlas toward a production-style command application:
+Mission 001: Build the Bridge.
 
-- Data-driven Fleet Command from `data/fleet.js`
-- ArcCorp starter framework from `data/atlas.js`
-- Universal search across fleet, places, and tools
-- Mission Planner starter
-- Commander Tools shell
-- Responsive command-console interface
+This release shifts the Atlas from a website prototype into a command-console style application foundation.
 
-## Upload instructions
+### Added
 
-Upload the extracted contents to the GitHub repository root:
+- Bridge OS dashboard design
+- Permanent command navigation
+- Stronger quick-action cards
+- Bridge Board for fast gameplay decisions
+- Fleet Command module remains data-driven from `data/fleet.js`
+- ArcCorp starter module remains data-driven from `data/atlas.js`
+- Mission Planner landing console
+- Mission Briefing / release direction panel
 
-- `index.html`
-- `README.md`
-- `assets/`
-- `data/`
-- `docs/`
+### Next Mission
 
-Commit changes, then refresh the GitHub Pages live site after deployment finishes.
+Mission 002 — ArcCorp Module
+
+Build out:
+
+- Area18
+- Baijini Point
+- Wala
+- Lyria
+
+Each location will get services, shops, medical, trade, mining, missions, and notes.
