@@ -151,4 +151,38 @@
   }
   searchInput.addEventListener("input", runSearch);
   byId("clearSearch").addEventListener("click", () => {searchInput.value="";searchResults.innerHTML="";searchInput.focus();});
+
+  // Ready Room shortcuts
+  document.querySelectorAll("[data-open-ship]").forEach(button => {
+    button.addEventListener("click", () => {
+      document.getElementById("fleet")?.scrollIntoView({behavior:"smooth"});
+      setTimeout(() => showShip(button.dataset.openShip), 350);
+    });
+  });
+
+  document.querySelectorAll("[data-open-location]").forEach(button => {
+    button.addEventListener("click", () => {
+      document.getElementById("atlas")?.scrollIntoView({behavior:"smooth"});
+      setTimeout(() => showLocation(button.dataset.openLocation), 350);
+    });
+  });
+
+  const tonightChoices = [
+    {mission:"Solo Combat", headline:"Solo Combat", summary:"Guardian MX · fast launch · medium risk."},
+    {mission:"Salvage", headline:"Solo Salvage", summary:"Vulture · steady payout · low crew requirement."},
+    {mission:"Cargo", headline:"Cargo Run", summary:"Cutlass Black or Hull B · route planning required."},
+    {mission:"Exploration", headline:"Exploration", summary:"Corsair or Zeus Mk II ES · flexible pace."},
+    {mission:"Medical", headline:"Medical Support", summary:"C8R Pisces · quick response · short session friendly."}
+  ];
+  let tonightIndex = 0;
+  const tonightButton = document.getElementById("tonightButton");
+  tonightButton?.addEventListener("click", () => {
+    tonightIndex = (tonightIndex + 1) % tonightChoices.length;
+    const choice = tonightChoices[tonightIndex];
+    document.getElementById("tonightHeadline").textContent = choice.headline;
+    document.getElementById("tonightSummary").textContent = choice.summary;
+    showMission(choice.mission);
+    document.getElementById("planner")?.scrollIntoView({behavior:"smooth"});
+  });
+
 })();

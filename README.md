@@ -1,19 +1,16 @@
 # Disko's Commander's Atlas
 
-## Mission 002 — ArcCorp Module
+## Mission 004 — Ready Room
 
-This build advances Bridge OS from a framework into a working cockpit companion.
+This build upgrades Bridge OS into a stronger nightly launch console.
 
 ### Included
-- Updated personal fleet database
-- Mission-role filters and ship detail panel
-- ArcCorp, Area18, Baijini Point, Wala, and Lyria module
-- Universal search across ships, locations, and tools
-- Mission planner using Disko's owned ships
-- Responsive second-monitor layout
-
-### Important
-Live-patch-sensitive shop, commodity, outpost, and medical details are deliberately marked for verification before they are treated as final.
+- New Ready Room dashboard
+- Favorite ship and staging-point shortcuts
+- “What should I do tonight?” mission picker
+- Improved bridge status panels
+- Direct links into Fleet Command, ArcCorp, and Mission Planner
+- Existing Mission 002 Fleet and ArcCorp modules preserved
 
 ### Install with GitHub Desktop
 Copy these files and folders into the local `diskos-commanders-atlas` repository, replacing matching files:
@@ -23,8 +20,8 @@ Copy these files and folders into the local `diskos-commanders-atlas` repository
 - `data/`
 - `README.md`
 
-Then commit with:
+Commit message:
 
-`Mission 002 - ArcCorp Module`
+`Mission 004 - Ready Room`
 
-Push to `origin` and GitHub Pages will deploy the update.
+Then click **Push origin**.

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#08131d">
-  <title>Disko's Commander's Atlas · Mission 002</title>
+  <title>Disko's Commander's Atlas · Mission 004</title>
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
@@ -15,7 +15,7 @@
         <div class="brand-mark">DCA</div>
         <div>
           <h1>Disko's Atlas</h1>
-          <p>Bridge OS · Mission 002</p>
+          <p>Bridge OS · Mission 004</p>
         </div>
       </div>
 
@@ -36,23 +36,51 @@
     </aside>
 
     <main>
-      <section class="hero" id="command">
+      <section class="hero ready-room" id="command">
         <div class="hero-copy">
-          <p class="eyebrow">Mission 002 · ArcCorp Module</p>
+          <p class="eyebrow">Bridge OS · Ready Room</p>
           <h2>Welcome back, Commander Disko.</h2>
-          <p>Fast fleet choices, ArcCorp navigation, and mission prep without digging through a wiki.</p>
+          <p>Choose tonight’s operation, open your fleet, or jump straight into ArcCorp intelligence.</p>
           <div class="hero-actions">
+            <button id="tonightButton">What should I do tonight?</button>
             <button data-jump="fleet">Open Fleet</button>
             <button data-jump="atlas">Open ArcCorp</button>
-            <button data-jump="planner">Plan Tonight</button>
           </div>
         </div>
         <div class="status-console">
           <div><span>Owned fleet</span><strong id="fleetCount">—</strong></div>
           <div><span>Atlas focus</span><strong>ArcCorp</strong></div>
-          <div><span>Build</span><strong>Mission 002</strong></div>
-          <p>One console. Three clicks or fewer.</p>
+          <div><span>Ready Room</span><strong>Online</strong></div>
+          <div><span>Build</span><strong>Mission 004</strong></div>
+          <p>Know the Verse. Command the Mission.</p>
         </div>
+      </section>
+
+      <section class="ready-grid" aria-label="Ready Room status">
+        <article class="ready-card">
+          <p class="eyebrow">Favorite ship</p>
+          <h3>Guardian MX</h3>
+          <p>Heavy combat pick for fast solo operations.</p>
+          <button class="secondary" data-open-ship="Guardian MX">Open ship card</button>
+        </article>
+        <article class="ready-card">
+          <p class="eyebrow">Favorite staging point</p>
+          <h3>Baijini Point</h3>
+          <p>Fast ArcCorp staging for Wala, Lyria, and Area18.</p>
+          <button class="secondary" data-open-location="Baijini Point">Open location</button>
+        </article>
+        <article class="ready-card">
+          <p class="eyebrow">Tonight quick pick</p>
+          <h3 id="tonightHeadline">Solo Combat</h3>
+          <p id="tonightSummary">Guardian MX · short launch sequence · medium risk.</p>
+          <button class="secondary" data-jump="planner">Review mission</button>
+        </article>
+        <article class="ready-card">
+          <p class="eyebrow">Development status</p>
+          <h3>ArcCorp Gold Standard</h3>
+          <p>Framework online. Detailed live-patch verification comes next.</p>
+          <button class="secondary" data-jump="briefing">View briefing</button>
+        </article>
       </section>
 
       <section class="search-panel" aria-labelledby="searchLabel">
@@ -92,7 +120,7 @@
       <section class="panel" id="atlas">
         <div class="section-heading">
           <div><p class="eyebrow">Star Atlas</p><h2>ArcCorp Operations</h2></div>
-          <span class="badge">Mission 002</span>
+          <span class="badge">Mission 004</span>
         </div>
         <div class="split-layout">
           <div id="locationGrid" class="card-grid locations"></div>
@@ -124,7 +152,7 @@
 
       <section class="panel" id="briefing">
         <div class="section-heading">
-          <div><p class="eyebrow">Mission Briefing</p><h2>Mission 002 — ArcCorp Module</h2></div>
+          <div><p class="eyebrow">Mission Briefing</p><h2>Mission 004 — Ready Room</h2></div>
           <span class="badge">Production build</span>
         </div>
         <ol class="timeline">
