@@ -1,142 +1,141 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Disko's Commander's Atlas · Bridge OS</title>
-  <link rel="stylesheet" href="assets/css/styles.css" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#08131d">
+  <title>Disko's Commander's Atlas · Mission 002</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
-  <div class="shell">
+  <div class="scanline" aria-hidden="true"></div>
+  <div class="app-shell">
     <aside class="sidebar">
       <div class="brand">
         <div class="brand-mark">DCA</div>
         <div>
           <h1>Disko's Atlas</h1>
-          <p>Bridge OS · Mission 001</p>
+          <p>Bridge OS · Mission 002</p>
         </div>
       </div>
-      <nav class="nav" aria-label="Primary">
-        <a href="#command" class="active" data-section-link="command">Command Center</a>
-        <a href="#fleet" data-section-link="fleet">Fleet Command</a>
-        <a href="#atlas" data-section-link="atlas">Star Atlas</a>
-        <a href="#tools" data-section-link="tools">Commander Tools</a>
-        <a href="#planner" data-section-link="planner">Mission Planner</a>
-        <a href="#briefing" data-section-link="briefing">Mission Briefing</a>
+
+      <nav class="nav" aria-label="Primary navigation">
+        <a class="active" href="#command" data-nav="command">Command Center</a>
+        <a href="#fleet" data-nav="fleet">Fleet Command</a>
+        <a href="#atlas" data-nav="atlas">Star Atlas</a>
+        <a href="#tools" data-nav="tools">Commander Tools</a>
+        <a href="#planner" data-nav="planner">Mission Planner</a>
+        <a href="#briefing" data-nav="briefing">Mission Briefing</a>
       </nav>
+
       <div class="sidebar-card">
-        <span class="label">Live Site</span>
-        <strong>disko19.github.io</strong>
-        <p>Bridge OS is now the permanent design direction.</p>
+        <span class="kicker">Current mission</span>
+        <strong>ArcCorp Module</strong>
+        <p>Area18, Baijini Point, Wala, and Lyria.</p>
       </div>
     </aside>
 
-    <main class="main">
+    <main>
       <section class="hero" id="command">
-        <div>
-          <p class="eyebrow">Release 3.0 · Bridge OS</p>
+        <div class="hero-copy">
+          <p class="eyebrow">Mission 002 · ArcCorp Module</p>
           <h2>Welcome back, Commander Disko.</h2>
-          <p class="hero-copy">Your second-monitor command console for fleet choices, mission prep, and fast Star Citizen lookup.</p>
+          <p>Fast fleet choices, ArcCorp navigation, and mission prep without digging through a wiki.</p>
           <div class="hero-actions">
             <button data-jump="fleet">Open Fleet</button>
-            <button data-jump="planner">Plan Tonight</button>
             <button data-jump="atlas">Open ArcCorp</button>
+            <button data-jump="planner">Plan Tonight</button>
           </div>
         </div>
-        <div class="command-stack">
-          <div class="status-grid">
-            <div><span>Fleet</span><strong id="fleetCount">—</strong></div>
-            <div><span>Focus</span><strong>ArcCorp</strong></div>
-            <div><span>Mode</span><strong>Bridge</strong></div>
-          </div>
-          <div class="mini-terminal">
-            <span class="label">Current Build</span>
-            <p><strong>Mission 001:</strong> Build the Bridge</p>
-            <p>Framework first. Content expansion follows.</p>
-          </div>
+        <div class="status-console">
+          <div><span>Owned fleet</span><strong id="fleetCount">—</strong></div>
+          <div><span>Atlas focus</span><strong>ArcCorp</strong></div>
+          <div><span>Build</span><strong>Mission 002</strong></div>
+          <p>One console. Three clicks or fewer.</p>
         </div>
       </section>
 
-      <section class="search-panel">
-        <label for="globalSearch">Universal Search</label>
+      <section class="search-panel" aria-labelledby="searchLabel">
+        <div>
+          <p class="eyebrow" id="searchLabel">Universal Search</p>
+          <h2>Search the bridge database</h2>
+        </div>
         <div class="search-row">
-          <input id="globalSearch" type="search" placeholder="Search Guardian, Wala, salvage, cargo, medical, ArcCorp…" />
-          <button id="clearSearch">Clear</button>
+          <input id="globalSearch" type="search" autocomplete="off" placeholder="Try Guardian MX, Wala, cargo, medical, salvage…">
+          <button id="clearSearch" class="secondary">Clear</button>
         </div>
-        <div id="searchResults" class="results"></div>
+        <div id="searchResults" class="search-results" aria-live="polite"></div>
       </section>
 
-      <section class="quick-board">
-        <article class="quick-card priority" data-jump="fleet"><span>🚀</span><h3>Fleet Command</h3><p>Your owned ships organized by mission lane.</p></article>
-        <article class="quick-card" data-jump="planner"><span>🎯</span><h3>Mission Planner</h3><p>Choose a loop and get the right ships first.</p></article>
-        <article class="quick-card" data-jump="atlas"><span>🌌</span><h3>Star Atlas</h3><p>ArcCorp is the first full location module.</p></article>
-        <article class="quick-card" data-jump="tools"><span>🧰</span><h3>Toolbox</h3><p>Find medical, shops, salvage, cargo, and more.</p></article>
-      </section>
-
-      <section class="panel command-grid-panel">
-        <div class="panel-header">
-          <div><p class="eyebrow">Bridge Board</p><h2>Fast Decisions</h2></div>
-          <span class="badge">Built for second monitor</span>
-        </div>
-        <div class="bridge-grid">
-          <article><span class="label">Solo Combat</span><strong>Guardian MX / Arrow / Sabre</strong><p>Quick bounty or escort setup.</p></article>
-          <article><span class="label">Heavy Cargo</span><strong>Hull C / Ironclad / Railen</strong><p>Route planning comes next.</p></article>
-          <article><span class="label">Salvage</span><strong>Vulture / Reclaimer / Moth</strong><p>Solo or crewed salvage prep.</p></article>
-          <article><span class="label">Medical</span><strong>C8R Pisces / Ursa Medivac</strong><p>Bunker rescue and field support.</p></article>
-        </div>
+      <section class="quick-grid" aria-label="Quick actions">
+        <button class="quick-card priority" data-jump="fleet"><span>01</span><strong>Fleet Command</strong><small>Choose by mission lane</small></button>
+        <button class="quick-card" data-jump="atlas"><span>02</span><strong>ArcCorp Module</strong><small>Area18, Baijini, Wala, Lyria</small></button>
+        <button class="quick-card" data-jump="planner"><span>03</span><strong>Mission Planner</strong><small>Pick tonight's operation</small></button>
+        <button class="quick-card" data-jump="tools"><span>04</span><strong>Commander Tools</strong><small>Fast decision utilities</small></button>
       </section>
 
       <section class="panel" id="fleet">
-        <div class="panel-header">
+        <div class="section-heading">
           <div><p class="eyebrow">Fleet Command</p><h2>Operational Hangar</h2></div>
           <div id="roleFilters" class="chips"></div>
         </div>
-        <div class="fleet-layout">
-          <div id="fleetGrid" class="fleet-grid"></div>
-          <aside id="shipDetail" class="detail-panel">
+        <div class="split-layout">
+          <div id="fleetGrid" class="card-grid"></div>
+          <aside id="shipDetail" class="detail-panel sticky">
             <p class="eyebrow">Select a ship</p>
-            <h3>Ship detail panel</h3>
-            <p>Click any ship card to view role, checklist, mission fit, and next page priority.</p>
+            <h3>Operational detail</h3>
+            <p>Choose a ship card to see role, mission fit, and pre-flight checklist.</p>
           </aside>
         </div>
       </section>
 
       <section class="panel" id="atlas">
-        <div class="panel-header">
-          <div><p class="eyebrow">Star Atlas</p><h2>ArcCorp Module Starter</h2></div>
-          <span class="badge">Area18 · Baijini · Wala · Lyria</span>
+        <div class="section-heading">
+          <div><p class="eyebrow">Star Atlas</p><h2>ArcCorp Operations</h2></div>
+          <span class="badge">Mission 002</span>
         </div>
-        <div id="locationGrid" class="location-grid"></div>
+        <div class="split-layout">
+          <div id="locationGrid" class="card-grid locations"></div>
+          <aside id="locationDetail" class="detail-panel sticky">
+            <p class="eyebrow">ArcCorp module</p>
+            <h3>Select a location</h3>
+            <p>Open a location card for services, navigation notes, and operational guidance.</p>
+          </aside>
+        </div>
       </section>
 
       <section class="panel" id="tools">
-        <div class="panel-header">
-          <div><p class="eyebrow">Commander Tools</p><h2>Decision Tool Console</h2></div>
-          <span class="badge">Shell now · data next</span>
+        <div class="section-heading">
+          <div><p class="eyebrow">Commander Tools</p><h2>Decision Console</h2></div>
+          <span class="badge">3 operational</span>
         </div>
-        <div class="tool-grid" id="toolGrid"></div>
+        <div id="toolGrid" class="tool-grid"></div>
       </section>
 
       <section class="panel" id="planner">
-        <div class="panel-header">
+        <div class="section-heading">
           <div><p class="eyebrow">Mission Planner</p><h2>Choose Tonight's Operation</h2></div>
         </div>
         <div id="missionButtons" class="chips large"></div>
-        <div id="missionOutput" class="mission-output"></div>
+        <div id="missionOutput" class="mission-output">
+          <p>Select an operation to see ships and a launch sequence.</p>
+        </div>
       </section>
 
       <section class="panel" id="briefing">
-        <div class="panel-header">
-          <div><p class="eyebrow">Mission 001</p><h2>Build the Bridge</h2></div>
-          <span class="badge">Release 3.0</span>
+        <div class="section-heading">
+          <div><p class="eyebrow">Mission Briefing</p><h2>Mission 002 — ArcCorp Module</h2></div>
+          <span class="badge">Production build</span>
         </div>
         <ol class="timeline">
-          <li><strong>Complete:</strong><span>Permanent bridge-style dashboard and navigation.</span></li>
-          <li><strong>Complete:</strong><span>Fleet, Atlas, Tools, and Planner landing consoles.</span></li>
-          <li><strong>Next:</strong><span>Mission 002 — ArcCorp: Area18, Baijini Point, Wala, and Lyria.</span></li>
-          <li><strong>Later:</strong><span>Dedicated ship pages, favorites, and browser-stored commander notes.</span></li>
+          <li><strong>Complete</strong><span>Permanent Bridge OS dashboard and navigation.</span></li>
+          <li><strong>Complete</strong><span>Fleet data includes Disko's updated owned ships.</span></li>
+          <li><strong>Complete</strong><span>Interactive ArcCorp, Area18, Baijini Point, Wala, and Lyria cards.</span></li>
+          <li><strong>Next</strong><span>Verify live-patch shops, outposts, commodities, and medical details.</span></li>
         </ol>
       </section>
+
+      <footer>Disko's Commander's Atlas · Built for Commander Disko</footer>
     </main>
   </div>
 

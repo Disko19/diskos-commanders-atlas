@@ -1,23 +1,187 @@
 window.DCA_LOCATIONS = [
- {name:'Area18', parent:'ArcCorp', type:'Landing Zone', tags:['shopping','medical','contracts','city'], summary:'Primary ArcCorp city hub. Build page will focus on shops, transit, spawn flow, and quick services.'},
- {name:'Baijini Point', parent:'ArcCorp', type:'Orbital Station', tags:['ship services','medical','claim','orbit'], summary:'ArcCorp orbital station and fast staging point for Area18 operations.'},
- {name:'Wala', parent:'ArcCorp', type:'Moon', tags:['mining','outposts','missions','surface'], summary:'ArcCorp moon page template: outposts, resources, missions, and nearby routes.'},
- {name:'Lyria', parent:'ArcCorp', type:'Moon', tags:['mining','outposts','surface'], summary:'ArcCorp moon page template for resource and surface operations.'}
+  {
+    "name": "ArcCorp",
+    "type": "Planet",
+    "parent": "Stanton",
+    "summary": "City-covered corporate planet and the center of Mission 002.",
+    "services": [
+      "Major landing zone",
+      "Orbital station access",
+      "Trade",
+      "Shopping",
+      "Medical"
+    ],
+    "navigation": "Use Area18 for the primary landing zone and Baijini Point for orbital staging.",
+    "notes": "Mission 002 template location."
+  },
+  {
+    "name": "Area18",
+    "type": "Landing Zone",
+    "parent": "ArcCorp",
+    "summary": "Primary ArcCorp landing zone and major shopping, medical, and trade hub.",
+    "services": [
+      "Medical",
+      "Habitation",
+      "Ship retrieval",
+      "Shopping",
+      "Trade terminals",
+      "Transit"
+    ],
+    "navigation": "Approach the ArcCorp city marker, request landing, then use local transit.",
+    "notes": "Build detailed shop and service listings after patch verification."
+  },
+  {
+    "name": "Baijini Point",
+    "type": "Orbital Station",
+    "parent": "ArcCorp",
+    "summary": "Orbital staging point above ArcCorp for ship services and local operations.",
+    "services": [
+      "Ship retrieval",
+      "Repair",
+      "Refuel",
+      "Rearm",
+      "Medical",
+      "Cargo access"
+    ],
+    "navigation": "Best fast staging point before ArcCorp, Wala, or Lyria operations.",
+    "notes": "Verify individual shops and clinic tier against current live patch."
+  },
+  {
+    "name": "Wala",
+    "type": "Moon",
+    "parent": "ArcCorp",
+    "summary": "ArcCorp moon used for mining, cargo, missions, and surface outpost operations.",
+    "services": [
+      "Surface outposts",
+      "Mining regions",
+      "Cargo opportunities",
+      "Ground operations"
+    ],
+    "navigation": "Stage from Baijini Point or Area18, then quantum to the selected surface marker.",
+    "notes": "Detailed outpost cards are the next content layer."
+  },
+  {
+    "name": "Lyria",
+    "type": "Moon",
+    "parent": "ArcCorp",
+    "summary": "Cold ArcCorp moon supporting mining, cargo, and surface missions.",
+    "services": [
+      "Surface outposts",
+      "Mining regions",
+      "Cargo opportunities",
+      "Ground operations"
+    ],
+    "navigation": "Stage from Baijini Point and verify suit protection before landing.",
+    "notes": "Add exact outpost and commodity data only after live-patch verification."
+  }
 ];
+
 window.DCA_TOOLS = [
- {name:'Nearest Medical', icon:'🏥', summary:'Find the nearest hospital, clinic, or respawn option.'},
- {name:'Ship Claim Finder', icon:'🛠️', summary:'Find practical claim and repair locations near your current operation.'},
- {name:'Cargo Route Prep', icon:'📦', summary:'Match cargo ships to station routes and trading notes.'},
- {name:'Mining Run Prep', icon:'⛏️', summary:'Pick ground or ship mining and build a checklist.'},
- {name:'Salvage Run Prep', icon:'♻️', summary:'Choose Vulture/Reclaimer/Moth and prep sale locations.'},
- {name:'Weapon & Component Finder', icon:'🔫', summary:'Future searchable index for guns, shields, drives, and parts.'}
+  {
+    "name": "Medical Finder",
+    "description": "Find the nearest known medical or respawn option.",
+    "status": "Framework"
+  },
+  {
+    "name": "Vehicle Spawn Finder",
+    "description": "Locate ground-vehicle spawning support.",
+    "status": "Framework"
+  },
+  {
+    "name": "Cargo Route Board",
+    "description": "Match owned haulers to route size and risk.",
+    "status": "Framework"
+  },
+  {
+    "name": "Salvage Launch Board",
+    "description": "Choose Vulture, Reclaimer, or Moth by session type.",
+    "status": "Operational"
+  },
+  {
+    "name": "Fleet Role Picker",
+    "description": "Filter Disko's owned fleet by mission lane.",
+    "status": "Operational"
+  },
+  {
+    "name": "Universal Search",
+    "description": "Search ships, ArcCorp locations, and tools.",
+    "status": "Operational"
+  }
 ];
+
 window.DCA_MISSIONS = {
- Combat:['Guardian MX','Ares Inferno','F7C-M Super Hornet','Arrow','Sabre','A1 Spirit'],
- Cargo:['Hull B','Hull C','Ironclad','Railen','Hermes','Cutlass Black','Prowler Utility'],
- Salvage:['Vulture','Reclaimer','Moth'],
- Medical:['C8R Pisces','Ursa Medivac'],
- Mining:['ROC','Golem OX'],
- Exploration:['Zeus Mk II ES','Corsair'],
- Support:['Starfarer Gemini','ATLS','Cutter']
+  "Solo Combat": {
+    "ships": [
+      "Guardian MX",
+      "Arrow",
+      "Sabre",
+      "Ares Inferno"
+    ],
+    "steps": [
+      "Pick a nearby staging station",
+      "Set repair and rearm fallback",
+      "Run one contract tier below your limit for the first pass"
+    ]
+  },
+  "Cargo": {
+    "ships": [
+      "Cutlass Black",
+      "Hull B",
+      "Hull C",
+      "Ironclad",
+      "Railen",
+      "Hermes"
+    ],
+    "steps": [
+      "Choose cargo volume",
+      "Confirm both terminals",
+      "Keep a reserve for losses and fees"
+    ]
+  },
+  "Salvage": {
+    "ships": [
+      "Vulture",
+      "Reclaimer",
+      "Moth"
+    ],
+    "steps": [
+      "Choose solo or crewed",
+      "Confirm storage and processing plan",
+      "Mark the sell location before launch"
+    ]
+  },
+  "Medical": {
+    "ships": [
+      "C8R Pisces",
+      "Ursa Medivac"
+    ],
+    "steps": [
+      "Restock medical gear",
+      "Confirm rescue coordinates",
+      "Plan extraction before entering the site"
+    ]
+  },
+  "Exploration": {
+    "ships": [
+      "Corsair",
+      "Zeus Mk II ES"
+    ],
+    "steps": [
+      "Check quantum range",
+      "Load supplies",
+      "Set a return fuel minimum"
+    ]
+  },
+  "Ground Mining": {
+    "ships": [
+      "ROC",
+      "Golem OX",
+      "Cutlass Black"
+    ],
+    "steps": [
+      "Choose carrier and moon",
+      "Check environmental protection",
+      "Confirm sale location"
+    ]
+  }
 };

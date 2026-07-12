@@ -1,31 +1,30 @@
 # Disko's Commander's Atlas
 
-## Release 3.0 — Bridge OS
+## Mission 002 — ArcCorp Module
 
-Mission 001: Build the Bridge.
+This build advances Bridge OS from a framework into a working cockpit companion.
 
-This release shifts the Atlas from a website prototype into a command-console style application foundation.
+### Included
+- Updated personal fleet database
+- Mission-role filters and ship detail panel
+- ArcCorp, Area18, Baijini Point, Wala, and Lyria module
+- Universal search across ships, locations, and tools
+- Mission planner using Disko's owned ships
+- Responsive second-monitor layout
 
-### Added
+### Important
+Live-patch-sensitive shop, commodity, outpost, and medical details are deliberately marked for verification before they are treated as final.
 
-- Bridge OS dashboard design
-- Permanent command navigation
-- Stronger quick-action cards
-- Bridge Board for fast gameplay decisions
-- Fleet Command module remains data-driven from `data/fleet.js`
-- ArcCorp starter module remains data-driven from `data/atlas.js`
-- Mission Planner landing console
-- Mission Briefing / release direction panel
+### Install with GitHub Desktop
+Copy these files and folders into the local `diskos-commanders-atlas` repository, replacing matching files:
 
-### Next Mission
+- `index.html`
+- `assets/`
+- `data/`
+- `README.md`
 
-Mission 002 — ArcCorp Module
+Then commit with:
 
-Build out:
+`Mission 002 - ArcCorp Module`
 
-- Area18
-- Baijini Point
-- Wala
-- Lyria
-
-Each location will get services, shops, medical, trade, mining, missions, and notes.
+Push to `origin` and GitHub Pages will deploy the update.

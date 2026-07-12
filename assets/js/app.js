@@ -1,64 +1,154 @@
-const fleet = window.DCA_FLEET || [];
-const locations = window.DCA_LOCATIONS || [];
-const tools = window.DCA_TOOLS || [];
-const missions = window.DCA_MISSIONS || {};
-const $ = (s) => document.querySelector(s);
-const $$ = (s) => [...document.querySelectorAll(s)];
-let activeRole = 'All';
-let selectedShip = null;
-function init(){
- $('#fleetCount').textContent = fleet.length;
- renderNavSpy(); renderRoleFilters(); renderFleet(); renderLocations(); renderTools(); renderMissions(); bindSearch(); bindQuickCards();
-}
-function renderNavSpy(){
- $$('.nav a').forEach(a=>a.addEventListener('click',()=>{$$('.nav a').forEach(x=>x.classList.remove('active'));a.classList.add('active');}));
-}
-function renderRoleFilters(){
- const roles=['All',...new Set(fleet.map(s=>s.lane))].sort((a,b)=>a==='All'?-1:b==='All'?1:a.localeCompare(b));
- $('#roleFilters').innerHTML=roles.map(r=>`<button class="chip ${r===activeRole?'active':''}" data-role="${r}">${r}</button>`).join('');
- $$('#roleFilters .chip').forEach(btn=>btn.addEventListener('click',()=>{activeRole=btn.dataset.role;renderRoleFilters();renderFleet();}));
-}
-function renderFleet(){
- const list=activeRole==='All'?fleet:fleet.filter(s=>s.lane===activeRole);
- $('#fleetGrid').innerHTML=list.map(s=>`<article class="fleet-card ${selectedShip?.name===s.name?'selected':''}" data-ship="${s.name}"><h3>${s.name}</h3><p>${s.notes}</p><span class="role">${s.lane} · ${s.role}</span></article>`).join('');
- $$('#fleetGrid .fleet-card').forEach(card=>card.addEventListener('click',()=>selectShip(card.dataset.ship)));
-}
-function selectShip(name){
- selectedShip=fleet.find(s=>s.name===name); renderFleet();
- $('#shipDetail').innerHTML=`<p class="eyebrow">${selectedShip.lane}</p><h3>${selectedShip.name}</h3><p>${selectedShip.notes}</p><ul class="detail-list"><li><strong>Role:</strong> ${selectedShip.role}</li><li><strong>Crew:</strong> ${selectedShip.crew}</li><li><strong>Mission Fit:</strong> ${selectedShip.missionFit || 'General operations and personal fleet planning.'}</li><li><strong>Checklist:</strong> Loadout, fuel, repair, med supplies, route, extraction plan.</li><li><strong>Next:</strong> Build dedicated ${selectedShip.name} operating page.</li></ul>`;
- $('#shipDetail').scrollIntoView({behavior:'smooth',block:'nearest'});
-}
-function renderLocations(){
- $('#locationGrid').innerHTML=locations.map(l=>`<article class="location-card"><span class="role">${l.parent} · ${l.type}</span><h3>${l.name}</h3><p>${l.summary}</p><p>${l.tags.map(t=>'#'+t).join(' ')}</p></article>`).join('');
-}
-function renderTools(){
- $('#toolGrid').innerHTML=tools.map(t=>`<article class="tool-card"><h3>${t.icon} ${t.name}</h3><p>${t.summary}</p></article>`).join('');
-}
-function renderMissions(){
- $('#missionButtons').innerHTML=Object.keys(missions).map(m=>`<button class="chip" data-mission="${m}">${m}</button>`).join('');
- $$('#missionButtons .chip').forEach(btn=>btn.addEventListener('click',()=>showMission(btn.dataset.mission)));
- showMission('Salvage');
-}
-function showMission(name){
- $$('#missionButtons .chip').forEach(b=>b.classList.toggle('active',b.dataset.mission===name));
- const ships=missions[name]||[];
- $('#missionOutput').innerHTML=`<p class="eyebrow">Recommended Assets</p><h3>${name} Operation</h3><p>Start with: <strong>${ships.join(', ')}</strong>.</p><ul class="detail-list"><li>Pick ship based on crew size and risk.</li><li>Check repair, fuel, ammo, and medical prep before launch.</li><li>Next release will add routes, sale points, and checklist presets.</li></ul>`;
-}
-function bindSearch(){
- const input=$('#globalSearch');
- input.addEventListener('input',()=>{
-  const q=input.value.trim().toLowerCase();
-  if(!q){$('#searchResults').innerHTML='';return;}
-  const shipHits=fleet.filter(s=>[s.name,s.role,s.lane,s.notes].join(' ').toLowerCase().includes(q)).map(s=>({kind:'Ship',title:s.name,body:`${s.lane} · ${s.role}`,action:()=>{location.hash='fleet';selectShip(s.name);}}));
-  const locHits=locations.filter(l=>[l.name,l.parent,l.type,l.tags.join(' '),l.summary].join(' ').toLowerCase().includes(q)).map(l=>({kind:'Location',title:l.name,body:`${l.parent} · ${l.type}`,action:()=>{location.hash='atlas';}}));
-  const toolHits=tools.filter(t=>[t.name,t.summary].join(' ').toLowerCase().includes(q)).map(t=>({kind:'Tool',title:t.name,body:t.summary,action:()=>{location.hash='tools';}}));
-  const hits=[...shipHits,...locHits,...toolHits].slice(0,8);
-  $('#searchResults').innerHTML=hits.length?hits.map((h,i)=>`<div class="result" data-hit="${i}"><strong>${h.kind}: ${h.title}</strong><br><span>${h.body}</span></div>`).join(''):'<div class="result">No match yet. Add it to the data files next.</div>';
-  $$('#searchResults .result[data-hit]').forEach(el=>el.addEventListener('click',()=>hits[Number(el.dataset.hit)].action()));
- });
- $('#clearSearch').addEventListener('click',()=>{input.value='';$('#searchResults').innerHTML='';input.focus();});
-}
-function bindQuickCards(){
- $$('[data-jump]').forEach(card=>card.addEventListener('click',()=>{location.hash=card.dataset.jump;}));
-}
-init();
+
+(() => {
+  const fleet = window.DCA_FLEET || [];
+  const locations = window.DCA_LOCATIONS || [];
+  const tools = window.DCA_TOOLS || [];
+  const missions = window.DCA_MISSIONS || {};
+
+  const byId = id => document.getElementById(id);
+  const escapeHtml = value => String(value).replace(/[&<>"']/g, ch => ({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
+  }[ch]));
+
+  byId("fleetCount").textContent = fleet.length;
+
+  document.querySelectorAll("[data-jump]").forEach(el => {
+    el.addEventListener("click", () => {
+      const target = document.getElementById(el.dataset.jump);
+      target?.scrollIntoView({behavior:"smooth", block:"start"});
+    });
+  });
+
+  const navLinks = [...document.querySelectorAll("[data-nav]")];
+  const sections = navLinks.map(a => document.getElementById(a.dataset.nav)).filter(Boolean);
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      navLinks.forEach(a => a.classList.toggle("active", a.dataset.nav === entry.target.id));
+    });
+  }, {rootMargin:"-35% 0px -55% 0px"});
+  sections.forEach(s => observer.observe(s));
+
+  let activeRole = "All";
+  const roles = ["All", ...new Set(fleet.map(ship => ship.role))];
+  const roleFilters = byId("roleFilters");
+  const fleetGrid = byId("fleetGrid");
+  const shipDetail = byId("shipDetail");
+
+  function renderRoleFilters(){
+    roleFilters.innerHTML = roles.map(role => `<button class="${role===activeRole?"active":""}" data-role="${escapeHtml(role)}">${escapeHtml(role)}</button>`).join("");
+    roleFilters.querySelectorAll("button").forEach(btn => btn.addEventListener("click", () => {
+      activeRole = btn.dataset.role;
+      renderRoleFilters();
+      renderFleet();
+    }));
+  }
+
+  function renderFleet(){
+    const filtered = activeRole === "All" ? fleet : fleet.filter(s => s.role === activeRole);
+    fleetGrid.innerHTML = filtered.map(ship => `
+      <article class="card" tabindex="0" data-ship="${escapeHtml(ship.name)}">
+        <div class="meta"><span>${escapeHtml(ship.role)}</span><span>${escapeHtml(ship.crew)}</span></div>
+        <h3>${escapeHtml(ship.name)}</h3>
+        <p>${escapeHtml(ship.lane)} · ${escapeHtml(ship.summary)}</p>
+      </article>`).join("");
+    fleetGrid.querySelectorAll("[data-ship]").forEach(card => {
+      const open = () => showShip(card.dataset.ship);
+      card.addEventListener("click", open);
+      card.addEventListener("keydown", e => { if(e.key==="Enter" || e.key===" "){e.preventDefault();open();}});
+    });
+  }
+
+  function showShip(name){
+    const ship = fleet.find(s => s.name === name);
+    if(!ship) return;
+    fleetGrid.querySelectorAll(".card").forEach(c => c.classList.toggle("selected", c.dataset.ship === name));
+    shipDetail.innerHTML = `
+      <p class="eyebrow">${escapeHtml(ship.role)} · ${escapeHtml(ship.lane)}</p>
+      <h3>${escapeHtml(ship.name)}</h3>
+      <p>${escapeHtml(ship.summary)}</p>
+      <div class="detail-block"><strong>Crew</strong><p>${escapeHtml(ship.crew)}</p></div>
+      <div class="detail-block"><strong>Mission fit</strong><ul>${ship.missions.map(x=>`<li>${escapeHtml(x)}</li>`).join("")}</ul></div>
+      <div class="detail-block"><strong>Pre-flight</strong><ul>${ship.checklist.map(x=>`<li>${escapeHtml(x)}</li>`).join("")}</ul></div>`;
+  }
+
+  renderRoleFilters();
+  renderFleet();
+
+  const locationGrid = byId("locationGrid");
+  const locationDetail = byId("locationDetail");
+  locationGrid.innerHTML = locations.map(loc => `
+    <article class="card" tabindex="0" data-location="${escapeHtml(loc.name)}">
+      <div class="meta"><span>${escapeHtml(loc.type)}</span><span>${escapeHtml(loc.parent)}</span></div>
+      <h3>${escapeHtml(loc.name)}</h3>
+      <p>${escapeHtml(loc.summary)}</p>
+    </article>`).join("");
+  locationGrid.querySelectorAll("[data-location]").forEach(card => {
+    const open = () => showLocation(card.dataset.location);
+    card.addEventListener("click", open);
+    card.addEventListener("keydown", e => { if(e.key==="Enter" || e.key===" "){e.preventDefault();open();}});
+  });
+
+  function showLocation(name){
+    const loc = locations.find(l => l.name === name);
+    if(!loc) return;
+    locationGrid.querySelectorAll(".card").forEach(c => c.classList.toggle("selected", c.dataset.location === name));
+    locationDetail.innerHTML = `
+      <p class="eyebrow">${escapeHtml(loc.type)} · ${escapeHtml(loc.parent)}</p>
+      <h3>${escapeHtml(loc.name)}</h3>
+      <p>${escapeHtml(loc.summary)}</p>
+      <div class="detail-block"><strong>Services and uses</strong><ul>${loc.services.map(x=>`<li>${escapeHtml(x)}</li>`).join("")}</ul></div>
+      <div class="detail-block"><strong>Navigation</strong><p>${escapeHtml(loc.navigation)}</p></div>
+      <div class="detail-block"><strong>Atlas note</strong><p>${escapeHtml(loc.notes)}</p></div>`;
+  }
+
+  byId("toolGrid").innerHTML = tools.map(tool => `
+    <article class="tool"><span class="status">${escapeHtml(tool.status)}</span><strong>${escapeHtml(tool.name)}</strong><p>${escapeHtml(tool.description)}</p></article>
+  `).join("");
+
+  const missionButtons = byId("missionButtons");
+  const missionOutput = byId("missionOutput");
+  missionButtons.innerHTML = Object.keys(missions).map((name,i) => `<button class="${i===0?"active":""}" data-mission="${escapeHtml(name)}">${escapeHtml(name)}</button>`).join("");
+  missionButtons.querySelectorAll("button").forEach(btn => btn.addEventListener("click", () => {
+    missionButtons.querySelectorAll("button").forEach(b=>b.classList.toggle("active", b===btn));
+    showMission(btn.dataset.mission);
+  }));
+  function showMission(name){
+    const mission = missions[name];
+    if(!mission) return;
+    missionOutput.innerHTML = `<p class="eyebrow">${escapeHtml(name)}</p><h3>Recommended owned ships</h3>
+      <div class="ship-pills">${mission.ships.map(s=>`<span>${escapeHtml(s)}</span>`).join("")}</div>
+      <h3>Launch sequence</h3><ol>${mission.steps.map(s=>`<li>${escapeHtml(s)}</li>`).join("")}</ol>`;
+  }
+  showMission(Object.keys(missions)[0]);
+
+  const searchInput = byId("globalSearch");
+  const searchResults = byId("searchResults");
+  const searchIndex = [
+    ...fleet.map(x=>({type:"Ship",name:x.name,detail:`${x.role} · ${x.lane}`,target:"fleet",action:()=>showShip(x.name),text:JSON.stringify(x)})),
+    ...locations.map(x=>({type:"Location",name:x.name,detail:`${x.type} · ${x.parent}`,target:"atlas",action:()=>showLocation(x.name),text:JSON.stringify(x)})),
+    ...tools.map(x=>({type:"Tool",name:x.name,detail:x.status,target:"tools",action:()=>{},text:JSON.stringify(x)}))
+  ];
+
+  function runSearch(){
+    const q = searchInput.value.trim().toLowerCase();
+    if(!q){searchResults.innerHTML="";return;}
+    const matches = searchIndex.filter(item => item.text.toLowerCase().includes(q)).slice(0,8);
+    searchResults.innerHTML = matches.length ? matches.map((item,i)=>`
+      <div class="search-result" tabindex="0" data-result="${i}">
+        <div><strong>${escapeHtml(item.name)}</strong><br><small>${escapeHtml(item.type)} · ${escapeHtml(item.detail)}</small></div>
+        <span>Open →</span>
+      </div>`).join("") : `<div class="search-result"><small>No result yet. This tells us what data to add next.</small></div>`;
+    searchResults.querySelectorAll("[data-result]").forEach(el => {
+      const open = () => {
+        const item = matches[Number(el.dataset.result)];
+        document.getElementById(item.target)?.scrollIntoView({behavior:"smooth"});
+        setTimeout(item.action, 350);
+      };
+      el.addEventListener("click", open);
+      el.addEventListener("keydown", e => {if(e.key==="Enter"){open();}});
+    });
+  }
+  searchInput.addEventListener("input", runSearch);
+  byId("clearSearch").addEventListener("click", () => {searchInput.value="";searchResults.innerHTML="";searchInput.focus();});
+})();
